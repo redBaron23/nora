@@ -34,6 +34,7 @@ export function withSideBar<P>(
     // At this point, the props being passed in are the original props the component expects.
     const [width, height] = useWindowSize();
     const [openMenu, setOpenMenu] = useState<boolean>(false);
+    const showBarButton:string = (700>width) ? "d-flex justify-content-end" : "invisible";
 
     useEffect(() => {
       console.log("Prev",openMenu)
@@ -51,7 +52,7 @@ export function withSideBar<P>(
       <div>
         <Sidebar.Pushable as={Segment}>
           <Menu className="bg-dark">
-            <Button className="bg-dark" onClick={handleMenu}>
+            <Button className="bg-dark"   onClick={handleMenu}>
               <Icon name="bars" size="huge" className="text-light" />
             </Button>
           </Menu>
@@ -65,7 +66,7 @@ export function withSideBar<P>(
             className="bg-dark"
             width="wide"
           >
-            <div className="d-flex justify-content-end">
+            <div className={showBarButton}>
               <Button className="bg-dark "  onClick={handleMenu}>
                 <Icon name="close" size="big" className="text-light" />
               </Button>
