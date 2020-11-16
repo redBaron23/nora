@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect, useEffect } from "react";
 import {
   Button,
   Image,
@@ -8,6 +8,19 @@ import {
   Segment,
   Sidebar,
 } from "semantic-ui-react";
+
+const useWindowSize = () => {
+  const [size, setSize] = useState<number[]>([0, 0]);
+  useLayoutEffect(() => {
+    const updateSize = () => {
+      setSize([window.innerWidth, window.innerHeight]);
+    };
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+  return size;
+};
 
 // First we need to add a type to let us extend the incoming component.
 // Mark the function as a generic using P (or whatever variable you want)
@@ -19,14 +32,20 @@ export function withSideBar<P>(
 ) {
   const ContentWithSideBar = (props: P) => {
     // At this point, the props being passed in are the original props the component expects.
+    const [width, height] = useWindowSize();
     const [openMenu, setOpenMenu] = useState<boolean>(false);
 
+    useEffect(() => {
+      console.log("Prev",openMenu)
+      setOpenMenu((width>700) || openMenu);
+      console.log(width)
+    });
     const handleMenu = () => {
       setOpenMenu(!openMenu);
     };
 
     const handleClickContent = () => {
-      setOpenMenu(false);
+      console.log(width);
     };
     return (
       <div>
@@ -38,7 +57,7 @@ export function withSideBar<P>(
           </Menu>
           <Sidebar
             as={Menu}
-            animation="overlay"
+            animation="push"
             icon="labeled"
             inverted
             vertical
@@ -47,9 +66,9 @@ export function withSideBar<P>(
             width="wide"
           >
             <div className="d-flex justify-content-end">
-            <Button className="bg-dark " onClick={handleMenu} >
-              <Icon name="close" size="big" className="text-light"  />
-            </Button>
+              <Button className="bg-dark "  onClick={handleMenu}>
+                <Icon name="close" size="big" className="text-light" />
+              </Button>
             </div>
             <Menu.Item as="h1">
               <div>
