@@ -27,9 +27,10 @@ export function withSideBar<P>(
 
     const handleClickContent = () => {
       setOpenMenu(false);
-    };    return (
+    };
+    return (
       <div>
-        <Sidebar.Pushable as={Segment} >
+        <Sidebar.Pushable as={Segment}>
           <Menu className="bg-dark">
             <Button className="bg-dark" onClick={handleMenu}>
               <Icon name="bars" size="huge" className="text-light" />
@@ -45,10 +46,12 @@ export function withSideBar<P>(
             className="bg-dark"
             width="wide"
           >
+            <div className="d-flex justify-content-end">
+            <Button className="bg-dark " onClick={handleMenu} >
+              <Icon name="close" size="big" className="text-light"  />
+            </Button>
+            </div>
             <Menu.Item as="h1">
-              <Button className="bg-dark" onClick={handleMenu}>
-                <Icon name="close" size="big" className="text-light" />
-              </Button>
               <div>
                 <Image
                   src="https://scontent.faep9-1.fna.fbcdn.net/v/t1.0-9/45361435_10216031244081362_351990621654745088_o.jpg?_nc_cat=110&ccb=2&_nc_sid=730e14&_nc_ohc=01x9bO8ILm0AX8aSKE-&_nc_ht=scontent.faep9-1.fna&oh=3ef8f1d9d7ff8ed8dd289fc90d7ac19f&oe=5FD9CDED"
