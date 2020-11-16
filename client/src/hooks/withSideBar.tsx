@@ -87,12 +87,12 @@ export function withSideBar<P>(
               </div>
             </Menu.Item>
             <Menu.Item as="a">
-              <Icon name="gamepad" />
-              Games
+              <Icon name="picture" />
+              Cuadros
             </Menu.Item>
             <Menu.Item as="a">
-              <Icon name="camera" />
-              Channels
+              <Icon name="mail" />
+              Contacto
             </Menu.Item>
           </Sidebar>
           <Sidebar.Pusher onClick={handleClickContent}>
