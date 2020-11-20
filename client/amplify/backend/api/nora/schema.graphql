@@ -1,0 +1,17 @@
+type Picture
+  @model
+  @auth(
+    rules: [
+      { allow: private, groupsField: "nora-admin",operations: [create, delete,update,read]  }
+      {
+        allow: public,
+        provider: iam,
+        operations: [read]
+      }
+    ]
+  ) {
+  id: ID!
+  title: String!
+  description: String!
+  src: String!
+}
