@@ -18,7 +18,7 @@ interface Props {
 export const Picture: React.FC<Props> = ({ picture }) => {
   return (
     <Card >
-    <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
+    <Image src={picture.src} wrapped ui={false} />
     <Card.Content>
   <Card.Header>{picture.title}</Card.Header>
 

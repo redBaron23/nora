@@ -1,16 +1,16 @@
 import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Gallery } from "./hooks/Gallery"
-import { withSideBar } from "./hooks/withSideBar"
-
+import  Main  from "./views/Main"
+import LogIn from "./views/LogIn"
 
 function App() {
   return (
     <div className="App">
-      <Gallery />
+      <LogIn />
+      <Main />
     </div>
   );
 }
 
-export default withSideBar(App);
+export default App
