@@ -1,7 +1,5 @@
 import React from "react";
-import { Card, Icon, Image } from 'semantic-ui-react'
-
-
+import { Card, Icon, Image } from "semantic-ui-react";
 
 export interface IPicture {
   id: number;
@@ -10,21 +8,17 @@ export interface IPicture {
   description: string;
 }
 
-
 interface Props {
-  picture:IPicture;
+  picture: IPicture;
 }
 
 export const Picture: React.FC<Props> = ({ picture }) => {
   return (
-    <Card >
-      <Image src={picture.src} class="img-fluid img-thumbnail" wrapped ui={false} 
-/>
-    <Card.Content>
-  <Card.Header>{picture.title}</Card.Header>
-
-    </Card.Content>
-
-  </Card>
+    <Image
+      src={picture.src}
+      class="img-fluid img-thumbnail"
+      wrapped
+      ui={false}
+    />
   );
 };
