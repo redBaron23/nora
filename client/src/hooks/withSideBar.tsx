@@ -22,6 +22,8 @@ const useWindowSize = () => {
   return size;
 };
 
+const breakWidth = 700;
+
 // First we need to add a type to let us extend the incoming component.
 // Mark the function as a generic using P (or whatever variable you want)
 export function withSideBar<P>(
@@ -34,25 +36,26 @@ export function withSideBar<P>(
     // At this point, the props being passed in are the original props the component expects.
     const [width, height] = useWindowSize();
     const [openMenu, setOpenMenu] = useState<boolean>(false);
-    const showBarButton:string = (700>width) ? "d-flex justify-content-end" : "invisible";
+    const showBarButton: string =
+      breakWidth > width ? "d-flex justify-content-end" : "invisible";
 
     useEffect(() => {
-      console.log("Prev",openMenu)
-      setOpenMenu((width>700) || openMenu);
-      console.log(width)
+      console.log("Prev", openMenu);
+      setOpenMenu(width > breakWidth || openMenu);
+      console.log(width);
     });
     const handleMenu = () => {
       setOpenMenu(!openMenu);
     };
 
     const handleClickContent = () => {
-      console.log(width);
+      if (breakWidth>width) setOpenMenu(false);
     };
     return (
       <div>
         <Sidebar.Pushable as={Segment}>
           <Menu className="bg-dark">
-            <Button className="bg-dark"   onClick={handleMenu}>
+            <Button className="bg-dark" onClick={handleMenu}>
               <Icon name="bars" size="huge" className="text-light" />
             </Button>
           </Menu>
@@ -67,7 +70,7 @@ export function withSideBar<P>(
             width="wide"
           >
             <div className={showBarButton}>
-              <Button className="bg-dark "  onClick={handleMenu}>
+              <Button className="bg-dark " onClick={handleMenu}>
                 <Icon name="close" size="big" className="text-light" />
               </Button>
             </div>
