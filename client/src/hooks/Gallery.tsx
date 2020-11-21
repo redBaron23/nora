@@ -18,8 +18,8 @@ export const Gallery: React.FC<IProps> = () => {
       <Container fluid={true}>
         <div className="row"  >
           {pictures.map((i) => (
-            <Col xs="12" sm="6" md="4" lg="3" >
-              <Picture  picture={i} />
+            <Col key={i.id} xs="12" sm="6" md="4" lg="3" >
+              <Picture  key={i.id} picture={i} />
             </Col>
           ))}
         </div>

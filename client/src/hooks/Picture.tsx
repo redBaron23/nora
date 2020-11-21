@@ -18,7 +18,8 @@ interface Props {
 export const Picture: React.FC<Props> = ({ picture }) => {
   return (
     <Card >
-    <Image src={picture.src} wrapped ui={false} />
+      <Image src={picture.src} class="img-fluid img-thumbnail" wrapped ui={false} 
+/>
     <Card.Content>
   <Card.Header>{picture.title}</Card.Header>
 
