@@ -19,6 +19,7 @@
     "react-bootstrap": "^1.4.0",
     "react-dom": "^17.0.1",
     "react-dropzone": "^11.2.4",
+    "react-image-file-resizer": "^0.3.8",
     "react-images-upload": "^1.2.8",
     "react-scripts": "4.0.0",
     "semantic-ui-css": "^2.4.1",

@@ -1,6 +1,6 @@
 {
     "identityPoolName": "noracdf383e3_identitypool_cdf383e3",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "noracdf383e3",
     "userPoolName": "noracdf383e3_userpool_cdf383e3",
     "autoVerifiedAttributes": [
@@ -29,7 +29,7 @@
         "email"
     ],
     "userpoolClientLambdaRole": "noracdcdf383e3_userpoolclient_lambda_role",
-    "userpoolClientSetAttributes": false,
+    "userpoolClientSetAttributes": true,
     "sharedId": "cdf383e3",
     "resourceName": "noracdf383e3",
     "authSelections": "identityPoolAndUserPool",
@@ -45,7 +45,7 @@
             "Arn"
         ]
     },
-    "useDefault": "default",
+    "useDefault": "manual",
     "usernameAttributes": [
         "email"
     ],
@@ -56,5 +56,9 @@
         "Ref": "AWS::StackId"
     },
     "permissions": [],
-    "dependsOn": []
+    "dependsOn": [],
+    "thirdPartyAuth": false,
+    "userPoolGroups": false,
+    "adminQueries": false,
+    "hostedUI": false
 }

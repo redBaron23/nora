@@ -10,7 +10,8 @@
   "storage": {
     "nora": {
       "service": "S3",
-      "providerPlugin": "awscloudformation"
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
     }
   },
   "api": {
@@ -32,6 +33,13 @@
           ]
         }
       }
+    }
+  },
+  "function": {
+    "S3Triggere23094fb": {
+      "service": "Lambda",
+      "providerPlugin": "awscloudformation",
+      "build": true
     }
   }
 }
