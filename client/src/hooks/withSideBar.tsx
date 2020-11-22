@@ -110,7 +110,7 @@ export function withSideBar<P>(
               </Menu.Item>
             </Link>{" "}
           </Sidebar>
-          <Sidebar.Pusher onClick={handleClickContent}>
+          <Sidebar.Pusher onClick={handleClickContent} className="min-vh-100">
             <Segment basic>
               <Header as="h3">
                 <Content {...props} />

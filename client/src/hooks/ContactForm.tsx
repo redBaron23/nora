@@ -14,7 +14,7 @@ interface Props {}
 export const ContactForm: React.FC<Props> = () => {
   return (
     <div>
-      <Form>
+      <Form size="huge">
         <Form.Group widths="equal">
           <Form.Field
             control={Input}
