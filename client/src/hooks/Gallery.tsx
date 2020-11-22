@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Picture, IPicture } from "./Picture";
-import { Container, Col, Row, CardGroup } from "react-bootstrap";
+import { Container, Col, Row } from "react-bootstrap";
 import { getPictures } from "../fun/storageHandler";
-import { Divider, Image } from "semantic-ui-react";
+import { Divider, Image, Card, CardGroup } from "semantic-ui-react";
+
+export interface IPicture {
+  id: number;
+  src: string;
+  title: string;
+  description: string;
+}
 
 interface IProps {}
 
@@ -17,13 +23,11 @@ export const Gallery: React.FC<IProps> = () => {
     <div>
       <Container fluid={true}>
         <div className="row">
-          <Image.Group size="large">
-            {pictures.map((i) => (
-              /*<Col key={i.id} xs="12" sm="6" md="4" lg="4" >*/
-
-              <Picture picture={i} />
-            ))}
-          </Image.Group>
+          {pictures.map((i) => (
+            <Col xs="12" sm="6" md="4" lg="4">
+              <Image size="big" src={i.src} />
+            </Col>
+          ))}
         </div>
       </Container>
     </div>
