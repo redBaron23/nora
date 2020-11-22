@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Col } from "react-bootstrap";
 import { getPictures } from "../fun/storageHandler";
-import { Divider, Image, Card, CardGroup } from "semantic-ui-react";
+import { Divider, Image } from "semantic-ui-react";
 
 export interface IPicture {
   id: number;
@@ -26,7 +26,7 @@ export const Gallery: React.FC<IProps> = () => {
           {pictures.map((i) => (
             <Col xs="12" sm="6" md="4" lg="3">
               <Image rounded size="big" src={i.src} />
-              <a>{i.title}</a>
+              {i.title}
               <Divider hidden/>
             </Col>
           ))}
