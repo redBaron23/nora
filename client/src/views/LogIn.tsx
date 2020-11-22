@@ -5,6 +5,7 @@ import { withAuthenticator } from "@aws-amplify/ui-react";
 import ImageUploader from "react-images-upload";
 import { uploadPictures, getPictures } from "../fun/storageHandler";
 import { Input, Form, Button } from "semantic-ui-react";
+import { withSideBar } from "../hooks/withSideBar";
 Amplify.configure(config);
 
 interface Props {}
@@ -58,4 +59,4 @@ const LogIn: React.FC<Props> = () => {
   );
 };
 
-export default withAuthenticator(LogIn);
+export default withSideBar(withAuthenticator(LogIn));
