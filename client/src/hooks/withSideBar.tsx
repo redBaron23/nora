@@ -9,6 +9,8 @@ import {
   Sidebar,
 } from "semantic-ui-react";
 
+import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
+
 const useWindowSize = () => {
   const [size, setSize] = useState<number[]>([0, 0]);
   useLayoutEffect(() => {
@@ -49,7 +51,7 @@ export function withSideBar<P>(
     };
 
     const handleClickContent = () => {
-      if (breakWidth>width) setOpenMenu(false);
+      if (breakWidth > width) setOpenMenu(false);
     };
     return (
       <div>
@@ -89,14 +91,18 @@ export function withSideBar<P>(
                 </Header>
               </div>
             </Menu.Item>
-            <Menu.Item as="a">
-              <Icon name="picture" />
-              Cuadros
-            </Menu.Item>
-            <Menu.Item as="a">
-              <Icon name="mail" />
-              Contacto
-            </Menu.Item>
+            <Link to="/home" onClick={() => setOpenMenu(false)}>
+              <Menu.Item as="a">
+                <Icon name="picture" />
+                Cuadros
+              </Menu.Item>
+            </Link>
+            <Link to="/contact" onClick={() => setOpenMenu(false)}>
+              <Menu.Item as="a">
+                <Icon name="mail" />
+                Contacto
+              </Menu.Item>
+            </Link>
           </Sidebar>
           <Sidebar.Pusher onClick={handleClickContent}>
             <Segment basic>
