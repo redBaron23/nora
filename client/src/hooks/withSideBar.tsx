@@ -9,7 +9,11 @@ import {
   Sidebar,
 } from "semantic-ui-react";
 
-import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+const isLogged = (): boolean => {
+  return localStorage.getItem("amplify-signin-with-hostedUI") !== null;
+};
 
 const useWindowSize = () => {
   const [size, setSize] = useState<number[]>([0, 0]);
@@ -46,21 +50,41 @@ export function withSideBar<P>(
       setOpenMenu(width > breakWidth || openMenu);
       console.log(width);
     });
-    const handleMenu = () => {
+    const handleMenu = ():void => {
       setOpenMenu(!openMenu);
     };
 
-    const handleClickContent = () => {
+    const handleClickContent = ():void => {
       if (breakWidth > width) setOpenMenu(false);
     };
+
+    const handleLogOut = ():void => {
+      localStorage.clear();
+    }
+
     return (
       <div>
         <Sidebar.Pushable as={Segment}>
-          <Menu className="bg-dark">
-            <Button className="bg-dark" onClick={handleMenu}>
-              <Icon name="bars" size="huge" className="text-light" />
-            </Button>
+          <Menu className="d-flex bg-dark">
+            <Menu.Item className="p-2">
+              <Button className="bg-dark" onClick={handleMenu}>
+                <Icon name="bars" size="huge" className="text-light" />
+              </Button>
+            </Menu.Item>
+            {isLogged() && (
+              <Menu.Item className="ml-auto p-2" as="a">
+                <Link to="/home" className="bg-dark text-light" onClick={() => handleLogOut()}>
+                  <Icon
+                    name="sign-out alternate"
+                    size="big"
+                    className="text-light"
+                  />
+                  Cerrar Sesion
+                </Link>
+              </Menu.Item>
+            )}
           </Menu>
+
           <Sidebar
             as={Menu}
             animation="overlay"
@@ -105,10 +129,10 @@ export function withSideBar<P>(
             </Link>
             <Link to="/login" onClick={() => setOpenMenu(false)}>
               <Menu.Item as="a">
-                <Icon name="sign-in alternate" />
-                Iniciar Sesion
+                <Icon name={isLogged() ? "upload" : "sign-in alternate"} />
+                {isLogged() ? "Subir Cuadro" : "Iniciar Sesion"}
               </Menu.Item>
-            </Link>{" "}
+            </Link>
           </Sidebar>
           <Sidebar.Pusher onClick={handleClickContent} className="min-vh-100">
             <Segment basic>

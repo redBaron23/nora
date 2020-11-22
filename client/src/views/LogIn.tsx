@@ -12,7 +12,6 @@ const listener = (data:any) => {
   console.log(data);
   switch (data.payload.event) {
     case "signIn":
-      alert('entro');
       logger.info("user signed in entro");
       break;
     case "signUp":
