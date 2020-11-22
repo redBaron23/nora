@@ -103,6 +103,12 @@ export function withSideBar<P>(
                 Contacto
               </Menu.Item>
             </Link>
+            <Link to="/login" onClick={() => setOpenMenu(false)}>
+              <Menu.Item as="a">
+                <Icon name="sign-in alternate" />
+                Iniciar Sesion
+              </Menu.Item>
+            </Link>{" "}
           </Sidebar>
           <Sidebar.Pusher onClick={handleClickContent}>
             <Segment basic>
