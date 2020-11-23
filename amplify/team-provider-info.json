@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-nora-dev-185141-authRole",
+      "UnauthRoleArn": "arn:aws:iam::754778745637:role/amplify-nora-dev-185141-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::754778745637:role/amplify-nora-dev-185141-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-nora-dev-185141-deployment",
+      "UnauthRoleName": "amplify-nora-dev-185141-unauthRole",
+      "StackName": "amplify-nora-dev-185141",
+      "StackId": "arn:aws:cloudformation:us-east-1:754778745637:stack/amplify-nora-dev-185141/16948810-291f-11eb-94c8-12e727a79a85",
+      "AmplifyAppId": "d2vpy3n3y8c5sf"
+    },
+    "categories": {
+      "auth": {
+        "noracdf383e3": {}
+      }
+    }
+  }
+}
