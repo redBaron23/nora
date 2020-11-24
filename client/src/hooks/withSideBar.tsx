@@ -9,6 +9,8 @@ import {
   Sidebar,
 } from "semantic-ui-react";
 
+import background from "../images/background.jpg";
+import profile from "../images/profile.jpg"
 import { Link } from "react-router-dom";
 
 const isLogged = (): boolean => {
@@ -50,17 +52,17 @@ export function withSideBar<P>(
       setOpenMenu(width > breakWidth || openMenu);
       console.log(width);
     });
-    const handleMenu = ():void => {
+    const handleMenu = (): void => {
       setOpenMenu(!openMenu);
     };
 
-    const handleClickContent = ():void => {
+    const handleClickContent = (): void => {
       if (breakWidth > width) setOpenMenu(false);
     };
 
-    const handleLogOut = ():void => {
+    const handleLogOut = (): void => {
       localStorage.clear();
-    }
+    };
 
     return (
       <div>
@@ -73,7 +75,11 @@ export function withSideBar<P>(
             </Menu.Item>
             {isLogged() && (
               <Menu.Item className="ml-auto p-2" as="a">
-                <Link to="/home" className="bg-dark text-light" onClick={() => handleLogOut()}>
+                <Link
+                  to="/home"
+                  className="bg-dark text-light"
+                  onClick={() => handleLogOut()}
+                >
                   <Icon
                     name="sign-out alternate"
                     size="big"
@@ -103,7 +109,7 @@ export function withSideBar<P>(
             <Menu.Item as="h1">
               <div>
                 <Image
-                  src="https://scontent.faep9-1.fna.fbcdn.net/v/t1.0-9/45361435_10216031244081362_351990621654745088_o.jpg?_nc_cat=110&ccb=2&_nc_sid=730e14&_nc_ohc=01x9bO8ILm0AX8aSKE-&_nc_ht=scontent.faep9-1.fna&oh=3ef8f1d9d7ff8ed8dd289fc90d7ac19f&oe=5FD9CDED"
+                  src={profile}
                   size="small"
                   circular
                   centered
@@ -134,10 +140,13 @@ export function withSideBar<P>(
               </Menu.Item>
             </Link>
           </Sidebar>
-          <Sidebar.Pusher onClick={handleClickContent} className="min-vh-100" style={{
-          backgroundImage: 'url("https://images.hdqwalls.com/download/brick-wall-5k-cg-1920x1080.jpg")',
-        }}
->
+          <Sidebar.Pusher
+            onClick={handleClickContent}
+            className="min-vh-100"
+            style={{
+              backgroundImage: "url(" + background + ")",
+            }}
+          >
             <Segment basic>
               <Header as="h3">
                 <Content {...props} />
