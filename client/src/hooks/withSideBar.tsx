@@ -64,7 +64,7 @@ export function withSideBar<P>(
 
     return (
       <div>
-        <Sidebar.Pushable as={Segment}>
+        <Sidebar.Pushable as={Segment} className="bg-dark">
           <Menu className="d-flex bg-dark">
             <Menu.Item className="p-2">
               <Button className="bg-dark" onClick={handleMenu}>
@@ -134,7 +134,10 @@ export function withSideBar<P>(
               </Menu.Item>
             </Link>
           </Sidebar>
-          <Sidebar.Pusher onClick={handleClickContent} className="min-vh-100">
+          <Sidebar.Pusher onClick={handleClickContent} className="min-vh-100" style={{
+          backgroundImage: 'url("https://images.hdqwalls.com/download/brick-wall-5k-cg-1920x1080.jpg")',
+        }}
+>
             <Segment basic>
               <Header as="h3">
                 <Content {...props} />
