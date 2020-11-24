@@ -28,7 +28,7 @@ const useWindowSize = () => {
   return size;
 };
 
-const breakWidth = 1700;
+const breakWidth = 3700;
 
 // First we need to add a type to let us extend the incoming component.
 // Mark the function as a generic using P (or whatever variable you want)
