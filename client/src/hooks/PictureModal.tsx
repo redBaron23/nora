@@ -11,9 +11,11 @@ export const PictureModal: React.FC<Props> = ({ picture }) => {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className="center-block">
+    <div >
       <Modal
         onClose={() => setOpen(false)}
+        basic
+        className="block-example border border-primary"
         size="fullscreen"
         onOpen={() => setOpen(true)}
         open={open}
