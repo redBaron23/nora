@@ -4,7 +4,7 @@ import * as mutations from "../graphql/mutations";
 import * as queries from "../graphql/queries";
 import { GraphQLOptions } from "@aws-amplify/api-graphql";
 import { GRAPHQL_AUTH_MODE } from "@aws-amplify/api";
-import { IPicture } from "../hooks/Picture";
+import { IPicture } from "../interfaces";
 import Resizer from 'react-image-file-resizer';
 
 Amplify.configure(config);
