@@ -1,24 +1,21 @@
 import React from "react";
 import { Card, Icon, Image } from "semantic-ui-react";
-
-export interface IPicture {
-  id: number;
-  src: string;
-  title: string;
-  description: string;
-}
+import { IPicture } from "../interfaces"
 
 interface Props {
   picture: IPicture;
 }
 
+
+const openDialog = (picture: IPicture) => {
+  alert(picture.src);
+}
+
 export const Picture: React.FC<Props> = ({ picture }) => {
   return (
-    <Image
-      src={picture.src}
-      class="img-fluid img-thumbnail"
-      wrapped
-      ui={false}
-    />
+    <div onClick={() => openDialog(picture)}>
+      <Image rounded size="big" src={picture.src} />
+      <div className="bg-dark text-white">{picture.title}</div>
+    </div>
   );
 };
