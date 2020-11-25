@@ -8,7 +8,6 @@ interface Props {
 
 
 const openDialog = (picture: IPicture) => {
-  alert(picture.src);
 }
 
 export const Picture: React.FC<Props> = ({ picture }) => {

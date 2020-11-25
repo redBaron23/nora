@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Col } from "react-bootstrap";
 import { getPictures } from "../fun/storageHandler";
 import { Divider } from "semantic-ui-react";
-import { Picture } from "./Picture"
+import { PictureModal } from "./PictureModal"
 import { IPicture } from "../interfaces"
 
 
@@ -22,7 +22,7 @@ export const Gallery: React.FC<IProps> = () => {
         <div className="row">
           {pictures.map((i) => (
             <Col xs="12" sm="6" md="6" lg="6" xl="4">
-              <Picture picture={i} />
+              <PictureModal picture={i} />
               <Divider hidden />
             </Col>
           ))}
