@@ -24,10 +24,10 @@ export const Gallery: React.FC<IProps> = () => {
       <Container fluid={true}>
         <div className="row">
           {pictures.map((i) => (
-            <Col xs="12" sm="6" md="4" lg="3">
+            <Col xs="12" sm="6" md="6" lg="6" xl="4">
               <Image rounded size="big" src={i.src} />
-              {i.title}
-              <Divider hidden/>
+              <div className="bg-dark text-white">{i.title}</div>
+              <Divider hidden />
             </Col>
           ))}
         </div>
