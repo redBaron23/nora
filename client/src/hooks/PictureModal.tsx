@@ -11,7 +11,7 @@ export const PictureModal: React.FC<Props> = ({ picture }) => {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div >
+    <div>
       <Modal
         onClose={() => setOpen(false)}
         basic
@@ -26,11 +26,17 @@ export const PictureModal: React.FC<Props> = ({ picture }) => {
         }
       >
         <Modal.Header>{picture.title}</Modal.Header>
-        <Modal.Content image>
-          <Image size="huge" src={picture.src} wrapped />
-          <Modal.Description>
-            <p>{picture.description}</p>
-          </Modal.Description>
+        <Modal.Content>
+          <div className="container">
+            <div className="row">
+              <div className="col-6">
+                <Image size="large" src={picture.src} wrapped />
+              </div>
+              <div className="col-6">
+                <p>{picture.description}</p>
+              </div>
+            </div>
+          </div>
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={() => setOpen(false)}>Cancel</Button>
