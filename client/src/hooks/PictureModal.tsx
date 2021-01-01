@@ -1,7 +1,8 @@
 import React from "react";
-import { Button, Header, Image, Modal } from "semantic-ui-react";
+import { Button, Image, Modal } from "semantic-ui-react";
 import { Picture } from "./Picture";
 import { IPicture } from "../interfaces";
+import { CustomIcon } from "./CustomIcon"
 
 interface Props {
   picture: IPicture;
@@ -34,6 +35,9 @@ export const PictureModal: React.FC<Props> = ({ picture }) => {
               </div>
               <div className="col-6">
                 <p>{picture.description}</p>
+              </div>
+              <div className="col-12">
+                <CustomIcon />
               </div>
             </div>
           </div>
