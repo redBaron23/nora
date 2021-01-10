@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ImageUploader from "react-images-upload";
 import { uploadPictures, getPictures } from "../fun/storageHandler";
 import { Input, Form, Button } from "semantic-ui-react";
+import ImageCropper from "./ImageCropper"
 
 interface Props {}
 
@@ -36,13 +37,7 @@ export const UploadPicture: React.FC<Props> = () => {
           placeholder="Da una descripcion sobre el cuadro que estas publicando..."
         />
         <Form.Field>
-          <ImageUploader
-            withIcon={true}
-            label="Cuadro a subir"
-            onChange={(f) => setPicture(f[0])}
-            singleImage={true}
-            imgExtension={[".jpg", ".jpeg", ".png", ".gif"]}
-          />
+          <ImageCropper />
         </Form.Field>
 
         <Button type="submit" onClick={onSubmit}>
