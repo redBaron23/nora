@@ -1,65 +1,36 @@
-import React, { useState, useCallback } from 'react'
-import ReactDOM from 'react-dom'
-import Cropper from 'react-easy-crop'
-import { Slider } from '@material-ui/core';
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
-import { withStyles } from '@material-ui/core/styles'
-import { getOrientation } from 'get-orientation/browser'
-import { getCroppedImg, getRotatedImage } from '../utils/canvasUtils'
-import { styles } from '../styles/CropperStyles'
+import React, { useState, useCallback } from "react";
+import ReactDOM from "react-dom";
+import Cropper from "react-easy-crop";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
+import { getCroppedImg } from "../utils/canvasUtils";
+import { styles } from "../styles/CropperStyles";
 
-const ORIENTATION_TO_ANGLE = {
-  '3': 180,
-  '6': 90,
-  '8': -90,
-}
-
-const CustomCropper = ({ classes }) => {
-  const [imageSrc, setImageSrc] = React.useState(null)
-  const [crop, setCrop] = useState({ x: 0, y: 0 })
-  const [rotation, setRotation] = useState(0)
-  const [zoom, setZoom] = useState(1)
-  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null)
-  const [croppedImage, setCroppedImage] = useState(null)
+const CustomCropper = ({ classes, setPicture }) => {
+  const [imageSrc, setImageSrc] = useState(null);
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+  const [croppedImage, setCroppedImage] = useState(null);
 
   const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
-    setCroppedAreaPixels(croppedAreaPixels)
-  }, [])
-
-  const showCroppedImage = useCallback(async () => {
-    try {
-      const croppedImage = await getCroppedImg(
-        imageSrc,
-        croppedAreaPixels,
-        rotation
-      )
-      console.log('donee', { croppedImage })
-      setCroppedImage(croppedImage)
-    } catch (e) {
-      console.error(e)
-    }
-  }, [imageSrc, croppedAreaPixels, rotation])
+    setCroppedAreaPixels(croppedAreaPixels);
+    console.log("la src", imageSrc);
+    getCroppedImg(imageSrc, croppedAreaPixels)
+      .then((picture) => setPicture(picture))
+      .catch((e) => console.log("Error setting image", e));
+  }, [imageSrc]);
 
   const onClose = useCallback(() => {
-    setCroppedImage(null)
-  }, [])
+    setCroppedImage(null);
+  }, []);
 
-  const onFileChange = async e => {
+  const onFileChange = async (e) => {
     if (e.target.files && e.target.files.length > 0) {
-      const file = e.target.files[0]
-      let imageDataUrl = await readFile(file)
-
-      // apply rotation if needed
-      const orientation = await getOrientation(file)
-      const rotation = ORIENTATION_TO_ANGLE[orientation]
-      if (rotation) {
-        imageDataUrl = await getRotatedImage(imageDataUrl, rotation)
-      }
-
-      setImageSrc(imageDataUrl)
+      const file = e.target.files[0];
+      readFile(file).then((imageDataUrl) => setImageSrc(imageDataUrl))
     }
-  }
+  };
 
   return (
     <div>
@@ -69,10 +40,8 @@ const CustomCropper = ({ classes }) => {
             <Cropper
               image={imageSrc}
               crop={crop}
-              rotation={rotation}
               aspect={4 / 3}
               onCropChange={setCrop}
-              onRotationChange={setRotation}
               onCropComplete={onCropComplete}
             />
           </div>
@@ -84,58 +53,24 @@ const CustomCropper = ({ classes }) => {
               >
                 Zoom
               </Typography>
-              <Slider
-                value={zoom}
-                min={1}
-                max={3}
-                step={0.1}
-                aria-labelledby="Zoom"
-                classes={{ container: classes.slider }}
-                onChange={(e, zoom) => setZoom(zoom)}
-              />
             </div>
-            <div className={classes.sliderContainer}>
-              <Typography
-                variant="overline"
-                classes={{ root: classes.sliderLabel }}
-              >
-                Rotation
-              </Typography>
-              <Slider
-                value={rotation}
-                min={0}
-                max={360}
-                step={1}
-                aria-labelledby="Rotation"
-                classes={{ container: classes.slider }}
-                onChange={(e, rotation) => setRotation(rotation)}
-              />
-            </div>
-            <Button
-              onClick={showCroppedImage}
-              variant="contained"
-              color="primary"
-              classes={{ root: classes.cropButton }}
-            >
-              Show Result
-            </Button>
           </div>
         </React.Fragment>
       ) : (
         <input type="file" onChange={onFileChange} accept="image/*" />
       )}
     </div>
-  )
-}
+  );
+};
 
 function readFile(file) {
-  return new Promise(resolve => {
-    const reader = new FileReader()
-    reader.addEventListener('load', () => resolve(reader.result), false)
-    reader.readAsDataURL(file)
-  })
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => resolve(reader.result), false);
+    reader.readAsDataURL(file);
+  });
 }
 
-const ImageCropper = withStyles(styles)(CustomCropper)
+const ImageCropper = withStyles(styles)(CustomCropper);
 
 export default ImageCropper;

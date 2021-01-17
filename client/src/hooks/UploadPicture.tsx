@@ -37,9 +37,9 @@ export const UploadPicture: React.FC<Props> = () => {
           placeholder="Da una descripcion sobre el cuadro que estas publicando..."
         />
         <Form.Field>
-          <ImageCropper />
+          <ImageCropper setPicture={setPicture}/>
         </Form.Field>
-
+  {console.log("la foto",picture)}
         <Button type="submit" onClick={onSubmit}>
           Enviar
         </Button>
