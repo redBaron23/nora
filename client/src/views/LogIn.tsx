@@ -22,7 +22,6 @@ const LogIn = () => {
   return authState === AuthState.SignedIn && user ? (
     <div>
       <UploadPicture />
-      <AmplifySignOut />
     </div>
   ) : (
     <AmplifyAuthenticator>
