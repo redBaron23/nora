@@ -88,5 +88,6 @@ const writeDb = async (
     },
   };
 
-  API.graphql(options);
+  await API.graphql(options)
+  window.location.reload();
 };
