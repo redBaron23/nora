@@ -61,4 +61,4 @@ const listener = (data: any) => {
 
 Hub.listen("auth", listener);
 
-export default withSideBar(withAuthenticator(LogIn));
+export default withSideBar(LogIn);
