@@ -12,6 +12,7 @@ import {
 import background from "../images/background.jpg";
 import profile from "../images/profile.jpg";
 import { Link } from "react-router-dom";
+import { ContactIcons } from "./ContactIcons"
 
 const isLogged = (): boolean => {
   return localStorage.getItem("amplify-signin-with-hostedUI") !== null;
@@ -20,11 +21,6 @@ const isLogged = (): boolean => {
 const handleLogOut = (): void => {
   localStorage.clear();
 };
-
-const whatsappMessage =
-  "Hola estoy interesado/a en un cuadro que vi en su sitio web noraaleman.ar";
-const whatsappUrl =
-  "https://wa.me/542216359941?text=" + encodeURI(whatsappMessage);
 
 const MainMenu = () => {
   if (isLogged()) {
@@ -44,23 +40,7 @@ const MainMenu = () => {
     );
   } else {
     return (
-      <Menu.Menu icon pointing secondary position="right">
-        <Menu.Item name="whatsapp" onClick={() => window.open(whatsappUrl)}>
-          <Icon name="whatsapp" size="big" className="text-success" />
-        </Menu.Item>
-        <Menu.Item
-          name="facebook"
-          onClick={() => window.open("https://facebook.com/nora.aleman.5")}
-        >
-          <Icon name="facebook f" size="big" className="text-primary" />
-        </Menu.Item>
-        <Menu.Item
-          name="instagram"
-          onClick={() => window.open("https://www.instagram.com/norilla07/")}
-        >
-          <Icon name="instagram" size="big" style={{color:'#C13584'}} />
-        </Menu.Item>
-      </Menu.Menu>
+      <ContactIcons />
     );
   }
 };
