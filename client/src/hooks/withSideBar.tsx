@@ -12,7 +12,7 @@ import {
 import background from "../images/background.jpg";
 import profile from "../images/profile.jpg";
 import { Link } from "react-router-dom";
-import { ContactIcons } from "./ContactIcons"
+import { ContactIcons } from "./ContactIcons";
 
 const isLogged = (): boolean => {
   return localStorage.getItem("amplify-signin-with-hostedUI") !== null;
@@ -39,9 +39,7 @@ const MainMenu = () => {
       </Menu.Menu>
     );
   } else {
-    return (
-      <ContactIcons />
-    );
+    return <ContactIcons />;
   }
 };
 
@@ -129,13 +127,19 @@ export function withSideBar<P>(
                 <Icon name="picture" />
                 Cuadros
               </Menu.Item>
+            </Link>{" "}
+            <Link to="/home" onClick={() => setOpenMenu(false)}>
+              <Menu.Item as="a">
+                <Icon name="user outline" />
+                Yo (Proximamente)
+              </Menu.Item>
             </Link>
-            <Link to="/contact" onClick={() => setOpenMenu(false)}>
+            {/*            <Link to="/contact" onClick={() => setOpenMenu(false)}>
               <Menu.Item as="a">
                 <Icon name="mail" />
                 Contacto
               </Menu.Item>
-            </Link>
+            </Link>*/}
             <Link to="/login" onClick={() => setOpenMenu(false)}>
               <Menu.Item as="a">
                 <Icon name={isLogged() ? "upload" : "sign-in alternate"} />
