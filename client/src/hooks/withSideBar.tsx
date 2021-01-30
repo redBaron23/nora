@@ -46,19 +46,19 @@ const MainMenu = () => {
     return (
       <Menu.Menu icon pointing secondary position="right">
         <Menu.Item name="whatsapp" onClick={() => window.open(whatsappUrl)}>
-          <Icon name="whatsapp" size="big" className="text-light" />
+          <Icon name="whatsapp" size="big" className="text-success" />
         </Menu.Item>
         <Menu.Item
           name="facebook"
           onClick={() => window.open("https://facebook.com/nora.aleman.5")}
         >
-          <Icon name="facebook" size="big" className="text-light" />
-        </Menu.Item>{" "}
+          <Icon name="facebook f" size="big" className="text-primary" />
+        </Menu.Item>
         <Menu.Item
           name="instagram"
           onClick={() => window.open("https://www.instagram.com/norilla07/")}
         >
-          <Icon name="instagram" size="big" className="text-light" />
+          <Icon name="instagram" size="big" style={{color:'#C13584'}} />
         </Menu.Item>
       </Menu.Menu>
     );
